@@ -8,7 +8,7 @@ public class Celeb : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		endLocation = new Vector2(7.3, 0);
+		endLocation = new Vector2(7.3f, 0f);
 
 		walkSpeed = 1f;
 
