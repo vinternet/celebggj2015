@@ -11,6 +11,7 @@ public class Celeb : MonoBehaviour {
 		endLocation = new Vector2(7.3f, 0f);
 
 		walkSpeed = 1f;
+		walkSpeed ++;
 
 	}
 	
