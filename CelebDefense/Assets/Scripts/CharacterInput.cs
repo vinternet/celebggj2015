@@ -43,7 +43,7 @@ public class CharacterInput : MonoBehaviour {
 	void Update()
 	{
 		//check for touches
-		if (Input.touchCount > 0)
+		/*if (Input.touchCount > 0)
 		{
 			//what was the position?
 			Vector2 touchPosition = Input.GetTouch(0).position;
@@ -54,7 +54,7 @@ public class CharacterInput : MonoBehaviour {
 			this.heading = new Vector2(touchWorldPosition.x - characterPosition.x, touchWorldPosition.y - characterPosition.y);
 			//make sure we don't surpass 1.
 			this.heading.Normalize();
-		}
+		}*/
 		
 	}
 	
@@ -71,11 +71,11 @@ public class CharacterInput : MonoBehaviour {
 		
 		Vector2 movement = new Vector2(xMovement, yMovement);
 		
-		if (movement.magnitude > 0)
+		if (movement.magnitude >= 0)
 		{
 			this.heading = movement.normalized;
 		}
-		
+
 		//use our character script reference to make a call into its public api
 		//to move the character by our input factor.
 		character.Move(heading);

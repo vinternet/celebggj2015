@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\Celeb.cs" />
+     <Compile Include="Assets\Scripts\CelebBehaviour.cs" />
      <Compile Include="Assets\Scripts\CharacterInput.cs" />
      <Compile Include="Assets\Scripts\CharacterScript.cs" />
  <Reference Include="UnityEngine.UI">
