@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.IO;
 public class CelebStatementManager : MonoBehaviour {
 
 	public const float TIME_BETWEEN_LETTERS = 0.03f;
-	public const float TIME_BETWEEN_STATEMENTS = 1f;
+	public const float TIME_BETWEEN_STATEMENTS = 0.5f;
 	public const float MAX_TIME_BETWEEN_SCANDALS = 10f;
 	public const float MIN_TIME_BETWEEN_SCANDALS = 4f;
 
@@ -17,12 +18,15 @@ public class CelebStatementManager : MonoBehaviour {
 
 	private bool isNextStatementBad;
 
+	public bool IsCurrentSpeechBad;
+	public bool IsCurrentTweetBad;
+
 	public CelebStatements statements;
 	public Topic neutralTopic; 
 
-	public Topic badTopic1;
-	public Topic badTopic2;
-	public Topic badTopic3;
+	private Topic badTopic1;
+	private Topic badTopic2;
+	private Topic badTopic3;
 
 	public string currentTweet;
 	public string currentSpeech;
@@ -38,10 +42,12 @@ public class CelebStatementManager : MonoBehaviour {
 
 	public float timeSinceLastScandal;
 
+	Text tweettext;
+
+	//how to create stuff not in the universe
 	public CelebStatementManager(){
 		Start ();
-		curTweetLetterIndex = 0;
-		}
+	}
 
 		// Use this for initialization
 	void Start () {
@@ -136,18 +142,22 @@ public class CelebStatementManager : MonoBehaviour {
 
 	private string getTweet(){
 		if (isNextStatementBad) {
-			return getBadTweet ();
 			isNextStatementBad = false;
+			IsCurrentTweetBad = true;
+			return getBadTweet ();
 		} else {
+			IsCurrentTweetBad = false;
 			return getGoodTweet();
 		}
 	}
 
 	private string getSpeech(){
-		if (isNextStatementBad) {			
-			return getBadSpeech ();
+		if (isNextStatementBad) {	
+			IsCurrentTweetBad = true;
 			isNextStatementBad = false;
+			return getBadSpeech ();
 		} else {
+			IsCurrentTweetBad = false;
 			return getGoodSpeech();
 		}
 	}

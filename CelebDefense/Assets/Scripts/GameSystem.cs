@@ -27,6 +27,7 @@ public class GameSystem : MonoBehaviour {
 	void Update ()
 	{
 		statementManager.setNextStatementQuality ();
-		print (statementManager.getUpdatedTweet (Time.deltaTime));
+		//GameObject.Find ("TweetBox").text = statementManager.getUpdatedTweet (Time.deltaTime);
+		//print (statementManager.getUpdatedTweet (Time.deltaTime));
 	}
 }
