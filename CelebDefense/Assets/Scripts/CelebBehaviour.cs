@@ -32,8 +32,11 @@ public class CelebBehaviour : MonoBehaviour {
 		if (reachedGoal == false)
 		{
 			Vector2 target = new Vector2(endGoal.position.x, endGoal.position.y);
+			//Vector2 target = new Vector2(endGoal.position.x, endGoal.position.y);
 			Vector2 movementDirection = (target - this.rigidbody2D.position);
 			movementDirection.Normalize();
+			//Vector3 threeDimensionalDirection = new Vector3(movementDirection.x, movementDirection.y, CelebrityProtection.CharacterMovementUtils.getZPositionGivenYPosition(target.y - this.rigidbody2D.position.y)); 
+//			threeDimensionalDirection.Normalize();
 			this.rigidbody2D.velocity = walkSpeed * movementDirection;
 		}
 	}

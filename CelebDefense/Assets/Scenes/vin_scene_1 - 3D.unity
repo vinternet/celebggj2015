@@ -196,6 +196,7 @@ GameObject:
   - 58: {fileID: 272568013}
   - 50: {fileID: 272568012}
   - 114: {fileID: 272568011}
+  - 114: {fileID: 272568014}
   m_Layer: 0
   m_Name: Celebrity
   m_TagString: Untagged
@@ -258,6 +259,17 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .5
   m_Center: {x: -.0500000007, y: -.660000026}
+--- !u!114 &272568014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 272568009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742a03742fc8be343858ec6864ae3919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &327820410
 Prefab:
   m_ObjectHideFlags: 0
@@ -478,6 +490,7 @@ GameObject:
   - 50: {fileID: 717481270}
   - 114: {fileID: 717481269}
   - 114: {fileID: 717481268}
+  - 114: {fileID: 717481272}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -551,6 +564,17 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .5
   m_Center: {x: 0, y: -.75}
+--- !u!114 &717481272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 717481266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742a03742fc8be343858ec6864ae3919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &729687638
 Prefab:
   m_ObjectHideFlags: 0
