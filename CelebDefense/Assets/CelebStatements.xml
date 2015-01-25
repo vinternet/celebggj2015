@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CelebStatements>
 	<Topics>
+	<!--MAKE SURE NEUTRAL IS FIRST. HARD CODING-->
+		<Topic name="Neutral">
+			<Tweets>
+				<Tweet>Why are they called mannicures and not WOmanicures?</Tweet>
+				<Tweet>Best. Kale. Lemongrass. Smoothie. Ever. #foodgasm</Tweet>
+				<Tweet>just read about hitler. what a jerk omg #jerkface</Tweet>
+				<Tweet>Yall know how i feel about japan: love it!</Tweet>
+				<Tweet>@WillFerrell thats wat WHO said? #dontGetIt</Tweet>
+				<Tweet>White people are in all over america! #diduknow</Tweet>
+			</Tweets>
+			<Speeches>
+				<Speech>My favorite yoga mat is definitely the one with a picture of Yoda.</Speech>
+				<Speech>I've just returned from a tour of the Starbucks of southeast Asia.</Speech> 
+				<Speech>The trick is to eat only green food on Fridays</Speech>
+				<Speech>Boys just wanna have fudge</Speech>
+				<Speech>My dog only eats gluten-free raw-hide.</Speech>
+				<Speech>The Holocaust was a real tragedy</Speech>
+			</Speeches>
+		</Topic>
+		
 		<Topic name="Toast">		
 			<Tweets>
 				<Tweet>LOL my hand smells like Brad's hamper #grossStuff #burntToast #lolwat</Tweet>
@@ -33,23 +53,6 @@
 				<Speech>I just read something about Germn women and sausage...</Speech>
 			</Speeches>
 		</Topic>
-		<Topic name="Neutral">
-			<Tweets>
-				<Tweet>Why are they called mannicures and not WOmanicures?</Tweet>
-				<Tweet>Best. Kale. Lemongrass. Smoothie. Ever. #foodgasm</Tweet>
-				<Tweet>just read about hitler. what a jerk omg #jerkface</Tweet>
-				<Tweet>Yall know how i feel about japan: love it!</Tweet>
-				<Tweet>@WillFerrell thats wat WHO said? #dontGetIt</Tweet>
-				<Tweet>White people are in all over america! #diduknow</Tweet>
-			</Tweets>
-			<Speeches>
-				<Speech>My favorite yoga mat is definitely the one with a picture of Yoda.</Speech>
-				<Speech>I've just returned from a tour of the Starbucks of southeast Asia.</Speech> 
-				<Speech>The trick is to eat only green food on Fridays</Speech>
-				<Speech>Boys just wanna have fudge</Speech>
-				<Speech>My dog only eats gluten-free raw-hide.</Speech>
-				<Speech>The Holocaust was a real tragedy</Speech>
-			</Speeches>
-		</Topic>
+
 	</Topics>
 </CelebStatements>

@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Celeb.cs" />
+     <Compile Include="Assets\CelebStatementManager.cs" />
+     <Compile Include="Assets\CelebStatements.cs" />
+     <Compile Include="Assets\Topic.cs" />
+     <None Include="Assets\CelebStatements.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
