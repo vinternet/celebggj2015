@@ -59,7 +59,10 @@ public class CelebStatementManager : MonoBehaviour {
 
 		// Use this for initialization
 	void Start () {
-		statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements 1.xml"));
+		//Debug.Log (Path.Combine(Application.dataPath, "Resources/CelebStatements 1.xml"));
+		Debug.Log (Application.dataPath+ "/Resources/CelebStatements 1.xml");
+		statements = CelebStatements.Load(Application.dataPath + "/Resources/CelebStatements 1.xml");
+		Debug.Log (statements);
 		neutralTopic = statements.Topics[0];
 
 		//fine as long as there are at least 3 topics. lol

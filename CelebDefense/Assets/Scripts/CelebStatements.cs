@@ -2,6 +2,7 @@
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using UnityEngine;
 
 
 [XmlRoot("CelebStatements")]
@@ -24,6 +25,13 @@ public class CelebStatements
 	public static CelebStatements Load(string path)
 	{
 		var serializer = new XmlSerializer(typeof(CelebStatements));
+		TextAsset ta = Resources.Load (path) as TextAsset;
+
+		/*using(var reader = new System.IO.StringReader(ta.text))
+		{
+			return serializer.Deserialize(reader) as CelebStatements;
+		}*/
+
 		using(var stream = new FileStream(path, FileMode.Open))
 		{
 			return serializer.Deserialize(stream) as CelebStatements;
