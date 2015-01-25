@@ -10,6 +10,7 @@ public class GameSystem : MonoBehaviour {
 	public float spawnTopY = 5f;
 	public float spawnBottomY = -5f;
 	public int spawnCount = 100;
+	public CelebStatementManager statementManager;
 
 	public float levelLeftX = -11f;
 	public float levelRightX = 22f;
@@ -22,9 +23,12 @@ public class GameSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		for (int i=0; i<spawnCount; i++)
-		{
-			Instantiate(crowdPerson, new Vector3(Random.Range (spawnLeftX, spawnRightX), Random.Range(spawnBottomY, spawnTopY)),Quaternion.identity);
+				for (int i=0; i<spawnCount; i++) {
+						Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
+				}
+
+		statementManager = new CelebStatementManager ();
+
 		}
 
 		topWall = GameObject.Find ("LevelTopWall");
@@ -43,5 +47,9 @@ public class GameSystem : MonoBehaviour {
 	void Update ()
 	{
 		
+		statementManager.setNextStatementQuality ();
+		//GameObject.Find ("TweetBox").text = statementManager.getUpdatedTweet (Time.deltaTime);
+		//print (statementManager.getUpdatedTweet (Time.deltaTime));
+
 	}
 }
