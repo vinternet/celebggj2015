@@ -8,8 +8,14 @@ using System.IO;
 
 public class CelebStatementManager : MonoBehaviour {
 
-	public const float TIME_BETWEEN_LETTERS = 0.08f;
-	public const float TIME_BETWEEN_STATEMENTS = 1.5f;
+	public const float TIME_BETWEEN_LETTERS = 0.03f;
+	public const float TIME_BETWEEN_STATEMENTS = 1f;
+	public const float MAX_TIME_BETWEEN_SCANDALS = 10f;
+	public const float MIN_TIME_BETWEEN_SCANDALS = 4f;
+
+	public const int ODDS_OF_BAD = 5; //1 in how many are bad. 
+
+	private bool isNextStatementBad;
 
 	public CelebStatements statements;
 	public Topic neutralTopic; 
@@ -32,9 +38,13 @@ public class CelebStatementManager : MonoBehaviour {
 
 	public float timeSinceLastScandal;
 
+	public CelebStatementManager(){
+		Start ();
+		curTweetLetterIndex = 0;
+		}
+
 		// Use this for initialization
 	void Start () {
-	
 		statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements.xml"));
 		neutralTopic = statements.Topics[0];
 
@@ -47,6 +57,8 @@ public class CelebStatementManager : MonoBehaviour {
 		do {
 			badTopic3 = statements.Topics[Random.Range(0, statements.Topics.Count-1)];
 		} while(badTopic3.Equals(badTopic1) || badTopic3.Equals(badTopic2));
+
+		currentTweet = getGoodTweet ();
 	}
 	
 	// Update is called once per frame
@@ -54,7 +66,7 @@ public class CelebStatementManager : MonoBehaviour {
 	
 	}
 
-	public string getGoodSpeech(){
+	private string getGoodSpeech(){
 		return neutralTopic.Speeches [Random.Range (0, neutralTopic.Speeches.Count - 1)];
 	}
 
@@ -62,7 +74,7 @@ public class CelebStatementManager : MonoBehaviour {
 		return neutralTopic.Tweets [Random.Range (0, neutralTopic.Tweets.Count - 1)];
 	}
 
-	public string getBadSpeech(){
+	private string getBadSpeech(){
 		int i = Random.Range (1, 3);
 		if(i==1)					
 			return badTopic1.Speeches [Random.Range (0, badTopic1.Speeches.Count - 1)];
@@ -73,7 +85,7 @@ public class CelebStatementManager : MonoBehaviour {
 		return "";
 	}
 
-	public string getBadTweet(){
+	private string getBadTweet(){
 		//lol why didn't i make this an array style 
 		int i = Random.Range (1, 3);
 		if(i==1)					
@@ -87,39 +99,63 @@ public class CelebStatementManager : MonoBehaviour {
 
 	public string getUpdatedTweet(float elapsedTime){
 		timeSinceLastTweetLetter += elapsedTime;
-
 		//if im at the end of the statement, compare teh tiem to teh wait timer
-		if (curTweetLetterIndex == currentTweet.Length - 1) {
+		//print ("curTweetLetterIndex:" + curTweetLetterIndex);
+		//print ("currentTweet.Length:" + (currentTweet.Length-1));
+		//print ("timeSinceLastTweetLetter:" + timeSinceLastTweetLetter);
+		if (curTweetLetterIndex == (currentTweet.Length - 1)) {
 			if (timeSinceLastTweetLetter >= TIME_BETWEEN_STATEMENTS) {
 				timeSinceLastTweetLetter = 0;
-				currentTweet = getGoodTweet(); //replace with logic to swith
+				currentTweet = getTweet(); //replace with logic to swith
 				curTweetLetterIndex = 0;
-			}else //if im midd statement, update the letter{
-				if (timeSinceLastTweetLetter >= TIME_BETWEEN_LETTERS) {
-					timeSinceLastTweetLetter = 0;
-					curTweetLetterIndex++;
-				}	
+			}
+		}else if (timeSinceLastTweetLetter >= TIME_BETWEEN_LETTERS) {
+				timeSinceLastTweetLetter = 0;
+				curTweetLetterIndex++;
 		}	
+			
 		
-		return currentTweet.Substring (0, curTweetLetterIndex);
+		return currentTweet.Substring (0, curTweetLetterIndex+1);
 	}
 
-
-	/**
-	 * statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements.xml"));
-	for(int i = 0; i< 3; i++){
-		print(statements.Topics[i].getRandomTweet("Germans"));
+	public string getUpdatedSpeech(float elapsedTime){
+		timeSinceLastSpeechLetter += elapsedTime;
+		if (curSpeechLetterIndex == (currentTweet.Length - 1)) {
+			if (timeSinceLastSpeechLetter >= TIME_BETWEEN_STATEMENTS) {
+				timeSinceLastSpeechLetter = 0;
+				currentSpeech = getSpeech(); //replace with logic to swith
+				curSpeechLetterIndex = 0;
+			}
+		}else if (timeSinceLastSpeechLetter >= TIME_BETWEEN_LETTERS) {
+			timeSinceLastSpeechLetter = 0;
+			curSpeechLetterIndex++;
+		}		
+		
+		return currentTweet.Substring (0, curTweetLetterIndex+1);
 	}
-	neutralTopic = statements.Topics[0];
-	print (neutralTopic.getRandomTweet ());
 
+	private string getTweet(){
+		if (isNextStatementBad) {
+			return getBadTweet ();
+			isNextStatementBad = false;
+		} else {
+			return getGoodTweet();
+		}
+	}
 
-	//deice what my three topics are. 
-	//get twweets and speehes for aeach of them once
-	//pull randomly fro THOSE lists durnig runtime. 
+	private string getSpeech(){
+		if (isNextStatementBad) {			
+			return getBadSpeech ();
+			isNextStatementBad = false;
+		} else {
+			return getGoodSpeech();
+		}
+	}
 
-	public Topic neutralTopic; 
-*/
+	public void setNextStatementQuality(){
+		int roll = Random.Range (1, ODDS_OF_BAD);
+		isNextStatementBad = (roll == 1);
+	}
 
 
 }

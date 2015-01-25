@@ -10,19 +10,23 @@ public class GameSystem : MonoBehaviour {
 	public float spawnTopY = 5f;
 	public float spawnBottomY = -5f;
 	public int spawnCount = 100;
+	public CelebStatementManager statementManager;
 
 	// Use this for initialization
 	void Start ()
 	{
-		for (int i=0; i<spawnCount; i++)
-		{
-			Instantiate(crowdPerson, new Vector3(Random.Range (spawnLeftX, spawnRightX), Random.Range(spawnBottomY, spawnTopY)),Quaternion.identity);
+				for (int i=0; i<spawnCount; i++) {
+						Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
+				}
+
+		statementManager = new CelebStatementManager ();
+
 		}
-	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		statementManager.setNextStatementQuality ();
+		print (statementManager.getUpdatedTweet (Time.deltaTime));
 	}
 }

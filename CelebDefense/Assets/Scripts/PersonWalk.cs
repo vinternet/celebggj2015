@@ -27,13 +27,8 @@ public class Celeb : MonoBehaviour {
 		/// 
 
 
-		statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements.xml"));
-		for(int i = 0; i< 3; i++){
-			print(statements.Topics[i].getRandomTweet("Germans"));
-		}
-		neutralTopic = statements.Topics[0];
-		print (neutralTopic.getRandomTweet ());
-
+		//statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements.xml"));
+	
 	}
 	
 	// Update is called once per frame
@@ -42,11 +37,6 @@ public class Celeb : MonoBehaviour {
 	}
 
 
-	//deice what my three topics are. 
-	//get twweets and speehes for aeach of them once
-	//pull randomly fro THOSE lists durnig runtime. 
-
-	public Topic neutralTopic; 
 
 
 
