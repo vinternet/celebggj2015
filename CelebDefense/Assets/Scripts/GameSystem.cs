@@ -26,6 +26,8 @@ public class GameSystem : MonoBehaviour {
 		for (int i=0; i<spawnCount; i++)
 		{
 			Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
+			//go.AddComponent<Animation>(CelebWalk);
+
 		}
 
 		//statementManager = new CelebStatementManager ();
