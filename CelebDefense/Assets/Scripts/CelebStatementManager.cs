@@ -59,7 +59,7 @@ public class CelebStatementManager : MonoBehaviour {
 
 		// Use this for initialization
 	void Start () {
-		statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements.xml"));
+		statements = CelebStatements.Load(Path.Combine(Application.dataPath, "CelebStatements 1.xml"));
 		neutralTopic = statements.Topics[0];
 
 		//fine as long as there are at least 3 topics. lol
@@ -133,6 +133,11 @@ public class CelebStatementManager : MonoBehaviour {
 				{
 					score--;
 					Debug.Log ("Score: " + score);
+					if(score < 0)
+					{
+						//load lose scene
+						Application.LoadLevel("lose");
+					}
 				}
 				timeSinceLastTweetLetter = 0;
 				setNextStatementQuality ();
@@ -160,6 +165,11 @@ public class CelebStatementManager : MonoBehaviour {
 				{
 					score--;
 					Debug.Log ("Score: " + score);
+					if(score < 0)
+					{
+						//load lose scene
+						Application.LoadLevel("lose");
+					}
 				}
 				timeSinceLastSpeechLetter = 0;
 				setNextStatementQuality ();

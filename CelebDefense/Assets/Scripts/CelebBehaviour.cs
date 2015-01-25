@@ -46,6 +46,7 @@ public class CelebBehaviour : MonoBehaviour {
 		if(coll.gameObject.name=="CelebrityEndGoal")
 		{
 			reachedGoal = true;
+			Application.LoadLevel("win");
 		}
 	}
 }
