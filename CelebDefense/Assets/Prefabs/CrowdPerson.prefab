@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 416418}
   - 58: {fileID: 5816420}
   - 50: {fileID: 5016420}
+  - 114: {fileID: 11430234}
   m_Layer: 0
   m_Name: CrowdPerson
   m_TagString: Untagged
@@ -84,6 +85,17 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_Radius: .25
   m_Center: {x: -.00800000038, y: -.100000001}
+--- !u!114 &11430234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742a03742fc8be343858ec6864ae3919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21216420
 SpriteRenderer:
   m_ObjectHideFlags: 1

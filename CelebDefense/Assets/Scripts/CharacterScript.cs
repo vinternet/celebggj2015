@@ -4,6 +4,8 @@ using System.Collections;
 
 using System;
 
+//using CelebrityProtection;
+
 public class CharacterScript : MonoBehaviour
 	
 {
