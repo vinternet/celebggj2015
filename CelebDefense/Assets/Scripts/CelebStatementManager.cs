@@ -14,7 +14,10 @@ public class CelebStatementManager : MonoBehaviour {
 	public const float MAX_TIME_BETWEEN_SCANDALS = 10f;
 	public const float MIN_TIME_BETWEEN_SCANDALS = 4f;
 
-	public const int ODDS_OF_BAD = 5; //1 in how many are bad. 
+	public const int ODDS_OF_BAD = 5; //1 in how many are bad.
+
+	public GameObject tweetText;
+	public GameObject talkText;
 
 	private bool isNextStatementBad;
 
@@ -45,9 +48,9 @@ public class CelebStatementManager : MonoBehaviour {
 	Text tweettext;
 
 	//how to create stuff not in the universe
-	public CelebStatementManager(){
+	/*public CelebStatementManager(){
 		Start ();
-	}
+	}*/
 
 		// Use this for initialization
 	void Start () {
@@ -69,7 +72,13 @@ public class CelebStatementManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		setNextStatementQuality ();
+		string printTweet = getUpdatedTweet();
+
+
+		tweetText.GetComponent<Text>().text = printTweet;
+
+		//Debug.Log ("Speech: " + printTweet);
 	}
 
 	private string getGoodSpeech(){
@@ -103,7 +112,8 @@ public class CelebStatementManager : MonoBehaviour {
 		return "";
 	}
 
-	public string getUpdatedTweet(float elapsedTime){
+	public string getUpdatedTweet(){
+		float elapsedTime = Time.deltaTime;
 		timeSinceLastTweetLetter += elapsedTime;
 		//if im at the end of the statement, compare teh tiem to teh wait timer
 		//print ("curTweetLetterIndex:" + curTweetLetterIndex);
