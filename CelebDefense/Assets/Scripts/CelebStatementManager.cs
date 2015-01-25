@@ -9,8 +9,8 @@ using System.IO;
 
 public class CelebStatementManager : MonoBehaviour {
 
-	public const float TIME_BETWEEN_LETTERS = 0.03f;
-	public const float TIME_BETWEEN_STATEMENTS = 0.5f;
+	public const float TIME_BETWEEN_LETTERS = 0.05f;
+	public const float TIME_BETWEEN_STATEMENTS = 1.0f;
 	public const float MAX_TIME_BETWEEN_SCANDALS = 10f;
 	public const float MIN_TIME_BETWEEN_SCANDALS = 4f;
 
