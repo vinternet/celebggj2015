@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CelebStatements>
+	<Topics>
+	<!--MAKE SURE NEUTRAL IS FIRST. HARD CODING-->
+		<Topic name="Neutral">
+			<Tweets>
+				<Tweet>Why are they called mannicures and not WOmanicures?</Tweet>
+				<Tweet>Best. Kale. Lemongrass. Smoothie. Ever. #foodgasm</Tweet>
+				<Tweet>just read about hitler. what a jerk omg #jerkface</Tweet>
+				<Tweet>Yall know how i feel about japan: love it!</Tweet>
+				<Tweet>@WillFerrell thats wat WHO said? #dontGetIt</Tweet>
+				<Tweet>White people are in all over america! #diduknow</Tweet>
+			</Tweets>
+			<Speeches>
+				<Speech>My favorite yoga mat is definitely the one with a picture of Yoda.</Speech>
+				<Speech>I've just returned from a tour of the Starbucks of southeast Asia.</Speech> 
+				<Speech>The trick is to eat only green food on Fridays</Speech>
+				<Speech>Boys just wanna have fudge</Speech>
+				<Speech>My dog only eats gluten-free raw-hide.</Speech>
+				<Speech>The Holocaust was a real tragedy</Speech>
+			</Speeches>
+		</Topic>
+		
+		<Topic name="Toast">		
+			<Tweets>
+				<Tweet>LOL my hand smells like Brad's hamper #grossStuff #burntToast #lolwat</Tweet>
+				<Tweet>Brie on melba toast rox my sox #foodporn #orderves</Tweet>
+				<Tweet>@kylieRoseRulz The weirdest place had to be in a toaster. #realtalk</Tweet>
+			</Tweets>
+			<Speeches>
+				<Speech>My favorite breakfast food has got to be French Toast.</Speech>
+				<Speech>Just bought the cutest toaster.</Speech>
+			</Speeches>
+		</Topic>
+		<Topic name="Gaza">
+			<Tweets>
+				<Tweet>Portland. Jakarta. Cairo. Gaza. Dublin. #willNOTtour</Tweet>
+				<Tweet>This place is SO boring! Cant wait til this guy stops droning on about gaza #yawn </Tweet>
+			</Tweets>
+			<Speeches>
+				<Speech>That's like a style of pubic hair right? A 'Gaza Strip'?</Speech>
+				<Speech>I bet I could end the problems in Gaza if I sent everyone there an iPod.</Speech>
+				<Speech>No, I'm pretty sure Gaza is a member of Wu-Tang Clan</Speech>
+			</Speeches>
+		</Topic>
+		<Topic name="Germans">
+			<Tweets>
+				<Tweet>Best smelling ppl in europe are totally the germans.</Tweet>
+				<Tweet>Just found this pic of me and monica and this german dude. #thatdudewasfat</Tweet>
+			</Tweets>
+			<Speeches>
+				<Speech>I think the worst drivers are the Germans.</Speech>
+				<Speech>I just read something about Germn women and sausage...</Speech>
+			</Speeches>
+		</Topic>
+
+	</Topics>
+</CelebStatements>
