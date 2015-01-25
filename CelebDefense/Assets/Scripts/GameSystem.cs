@@ -23,12 +23,22 @@ public class GameSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
+//<<<<<<< HEAD
+				for (int i=0; i<spawnCount; i++) {
+						Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
+				}
+
+		//statementManager = new CelebStatementManager ();
+
+		//}
+//======
 		for (int i=0; i<spawnCount; i++)
 		{
 			Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
 			//go.AddComponent<Animation>(CelebWalk);
 
 		}
+//>>>>>>> ef520937d8b5ad6dff4f6269f83ea98e5ab42dd4
 
 		//statementManager = new CelebStatementManager ();
 		statementManager = gameObject.GetComponent<CelebStatementManager>();

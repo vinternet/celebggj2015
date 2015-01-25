@@ -58,25 +58,27 @@ public class CelebStatementManager : MonoBehaviour {
 		neutralTopic = statements.Topics[0];
 
 		//fine as long as there are at least 3 topics. lol
-		badTopic1 = statements.Topics[Random.Range(0, statements.Topics.Count-1)];
-		do {
-			badTopic2 = statements.Topics[Random.Range(0, statements.Topics.Count-1)];
-		} while(badTopic2.Equals(badTopic1));
+		badTopic1 = statements.Topics[1];
+	//	do {
+			badTopic2 = statements.Topics[2];
+		//} while(badTopic2.Equals(badTopic1));
 
-		do {
-			badTopic3 = statements.Topics[Random.Range(0, statements.Topics.Count-1)];
-		} while(badTopic3.Equals(badTopic1) || badTopic3.Equals(badTopic2));
+		//do {
+			badTopic3 = statements.Topics[3];
+		//} while(badTopic3.Equals(badTopic1) || badTopic3.Equals(badTopic2));
 
 		currentTweet = getGoodTweet ();
+		currentSpeech = getGoodSpeech ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		setNextStatementQuality ();
+
 		string printTweet = getUpdatedTweet();
 
 
 		tweetText.GetComponent<Text>().text = printTweet;
+		talkText.GetComponent<Text>().text = getUpdatedSpeech();
 
 		//Debug.Log ("Speech: " + printTweet);
 	}
@@ -103,12 +105,13 @@ public class CelebStatementManager : MonoBehaviour {
 	private string getBadTweet(){
 		//lol why didn't i make this an array style 
 		int i = Random.Range (1, 3);
-		if(i==1)					
-			return badTopic1.Tweets [Random.Range (0, badTopic1.Tweets.Count - 1)];
-		if(i==2)					
-			return badTopic2.Tweets [Random.Range (0, badTopic2.Tweets.Count - 1)];
-		if(i==3)					
-			return badTopic3.Tweets [Random.Range (0, badTopic3.Tweets.Count - 1)];
+		if (i == 1) {					
+				return badTopic1.Tweets [Random.Range (0, badTopic1.Tweets.Count - 1)];
+		} else if (i == 2) {				
+				return badTopic2.Tweets [Random.Range (0, badTopic2.Tweets.Count - 1)];
+		} else if (i == 3) {					
+				return badTopic3.Tweets [Random.Range (0, badTopic3.Tweets.Count - 1)];
+		}
 		return "";
 	}
 
@@ -122,6 +125,7 @@ public class CelebStatementManager : MonoBehaviour {
 		if (curTweetLetterIndex == (currentTweet.Length - 1)) {
 			if (timeSinceLastTweetLetter >= TIME_BETWEEN_STATEMENTS) {
 				timeSinceLastTweetLetter = 0;
+				setNextStatementQuality ();
 				currentTweet = getTweet(); //replace with logic to swith
 				curTweetLetterIndex = 0;
 			}
@@ -134,11 +138,15 @@ public class CelebStatementManager : MonoBehaviour {
 		return currentTweet.Substring (0, curTweetLetterIndex+1);
 	}
 
-	public string getUpdatedSpeech(float elapsedTime){
-		timeSinceLastSpeechLetter += elapsedTime;
-		if (curSpeechLetterIndex == (currentTweet.Length - 1)) {
+	public string getUpdatedSpeech(){
+		timeSinceLastSpeechLetter += Time.deltaTime;
+		print ("badtopic1:" + badTopic1.Name);
+		print ("badtopic2:" + badTopic2.Name);
+		print ("badtopic3:" + badTopic2.Name);
+		if (curSpeechLetterIndex == (currentSpeech.Length - 1)) {
 			if (timeSinceLastSpeechLetter >= TIME_BETWEEN_STATEMENTS) {
 				timeSinceLastSpeechLetter = 0;
+				setNextStatementQuality ();
 				currentSpeech = getSpeech(); //replace with logic to swith
 				curSpeechLetterIndex = 0;
 			}
@@ -147,27 +155,31 @@ public class CelebStatementManager : MonoBehaviour {
 			curSpeechLetterIndex++;
 		}		
 		
-		return currentTweet.Substring (0, curTweetLetterIndex+1);
+		return currentSpeech.Substring (0, curSpeechLetterIndex+1);
 	}
 
 	private string getTweet(){
 		if (isNextStatementBad) {
 			isNextStatementBad = false;
+			tweetText.GetComponent<Text>().color = Color.yellow;
 			IsCurrentTweetBad = true;
 			return getBadTweet ();
 		} else {
 			IsCurrentTweetBad = false;
+			tweetText.GetComponent<Text>().color = Color.black;
 			return getGoodTweet();
 		}
 	}
 
 	private string getSpeech(){
 		if (isNextStatementBad) {	
-			IsCurrentTweetBad = true;
+			IsCurrentSpeechBad = true;
+			talkText.GetComponent<Text>().color = Color.yellow;
 			isNextStatementBad = false;
 			return getBadSpeech ();
 		} else {
-			IsCurrentTweetBad = false;
+			IsCurrentSpeechBad = false;
+			talkText.GetComponent<Text>().color = Color.black;
 			return getGoodSpeech();
 		}
 	}
