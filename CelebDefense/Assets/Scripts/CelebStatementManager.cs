@@ -43,7 +43,12 @@ public class CelebStatementManager : MonoBehaviour {
 	public int tweetState;
 	public int speechState;
 
+
 	public float timeSinceLastScandal;
+
+	bool tweetCancelled = false;
+	bool speechCancelled = false;
+	public int score = 5;
 
 	Text tweettext;
 
@@ -122,11 +127,17 @@ public class CelebStatementManager : MonoBehaviour {
 		//print ("curTweetLetterIndex:" + curTweetLetterIndex);
 		//print ("currentTweet.Length:" + (currentTweet.Length-1));
 		//print ("timeSinceLastTweetLetter:" + timeSinceLastTweetLetter);
-		if (curTweetLetterIndex == (currentTweet.Length - 1)) {
+		if (curTweetLetterIndex == currentTweet.Length - 1 || tweetCancelled) {
 			if (timeSinceLastTweetLetter >= TIME_BETWEEN_STATEMENTS) {
+				if(!tweetCancelled && IsCurrentTweetBad)
+				{
+					score--;
+					Debug.Log ("Score: " + score);
+				}
 				timeSinceLastTweetLetter = 0;
 				setNextStatementQuality ();
 				currentTweet = getTweet(); //replace with logic to swith
+				tweetCancelled = false;
 				curTweetLetterIndex = 0;
 			}
 		}else if (timeSinceLastTweetLetter >= TIME_BETWEEN_LETTERS) {
@@ -143,11 +154,17 @@ public class CelebStatementManager : MonoBehaviour {
 		//print ("badtopic1:" + badTopic1.Name);
 		//print ("badtopic2:" + badTopic2.Name);
 		//print ("badtopic3:" + badTopic2.Name);
-		if (curSpeechLetterIndex == (currentSpeech.Length - 1)) {
+		if (curSpeechLetterIndex == currentSpeech.Length - 1 || speechCancelled) {
 			if (timeSinceLastSpeechLetter >= TIME_BETWEEN_STATEMENTS) {
+				if(!speechCancelled && IsCurrentSpeechBad)
+				{
+					score--;
+					Debug.Log ("Score: " + score);
+				}
 				timeSinceLastSpeechLetter = 0;
 				setNextStatementQuality ();
 				currentSpeech = getSpeech(); //replace with logic to swith
+				speechCancelled = false;
 				curSpeechLetterIndex = 0;
 			}
 		}else if (timeSinceLastSpeechLetter >= TIME_BETWEEN_LETTERS) {
@@ -191,14 +208,16 @@ public class CelebStatementManager : MonoBehaviour {
 
 	public void cancelCurrentTweet()
 	{
-		curTweetLetterIndex = currentTweet.Length - 1;
+		//curTweetLetterIndex = currentTweet.Length - 1;
 		timeSinceLastTweetLetter = 12;
+		tweetCancelled = true;
 	}
 
 	public void cancelCurrentSpeech()
 	{
-		curSpeechLetterIndex = currentSpeech.Length - 1;
+		//curSpeechLetterIndex = currentSpeech.Length - 1;
 		timeSinceLastSpeechLetter = 12;
+		speechCancelled = true;
 	}
 
 }
