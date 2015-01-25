@@ -8,7 +8,7 @@ public class CharacterScript : MonoBehaviour
 	
 {
 	//max speed of character
-	public float maxSpeed =5.0f;
+	public float maxSpeed = 5.0f;
 	
 	//cached version of our physics rigid body.
 	private Rigidbody2D cachedRigidBody2D;

@@ -47,9 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\Celeb.cs" />
+     <Compile Include="Assets\Scripts\CelebBehaviour.cs" />
      <Compile Include="Assets\Scripts\CharacterInput.cs" />
      <Compile Include="Assets\Scripts\CharacterScript.cs" />
+     <Compile Include="Assets\Scripts\GameSystem.cs" />
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
