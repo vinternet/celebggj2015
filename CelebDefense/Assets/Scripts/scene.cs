@@ -10,8 +10,8 @@ public class scene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetButton("Jump")){
-			Application.LoadLevel ("heather_scene_2");
+		if(Input.GetButton("Shush")){
+			Application.LoadLevel ("vin_scene_1");
 		}
 	}
 }

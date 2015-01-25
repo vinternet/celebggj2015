@@ -140,9 +140,9 @@ public class CelebStatementManager : MonoBehaviour {
 
 	public string getUpdatedSpeech(){
 		timeSinceLastSpeechLetter += Time.deltaTime;
-		print ("badtopic1:" + badTopic1.Name);
-		print ("badtopic2:" + badTopic2.Name);
-		print ("badtopic3:" + badTopic2.Name);
+		//print ("badtopic1:" + badTopic1.Name);
+		//print ("badtopic2:" + badTopic2.Name);
+		//print ("badtopic3:" + badTopic2.Name);
 		if (curSpeechLetterIndex == (currentSpeech.Length - 1)) {
 			if (timeSinceLastSpeechLetter >= TIME_BETWEEN_STATEMENTS) {
 				timeSinceLastSpeechLetter = 0;
@@ -189,5 +189,16 @@ public class CelebStatementManager : MonoBehaviour {
 		isNextStatementBad = (roll == 1);
 	}
 
+	public void cancelCurrentTweet()
+	{
+		curTweetLetterIndex = currentTweet.Length - 1;
+		timeSinceLastTweetLetter = 12;
+	}
+
+	public void cancelCurrentSpeech()
+	{
+		curSpeechLetterIndex = currentSpeech.Length - 1;
+		timeSinceLastSpeechLetter = 12;
+	}
 
 }

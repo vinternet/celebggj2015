@@ -16,6 +16,14 @@ public class CharacterInput : MonoBehaviour {
 	private Camera mainCamera;
 	
 	private Vector2 heading;
+	private CircleCollider2D checker;
+	private GameObject celeb;
+	private CelebStatementManager sm;
+
+	public float shushCooldown = 0.5f;
+	public float inputCooldown = 0.01f;
+	private float shushTimer = 0f;
+	private float inputTimer = 0f;
 	
 	/// <summary>
 	/// Use this function for initialization of just this component.
@@ -35,6 +43,9 @@ public class CharacterInput : MonoBehaviour {
 		this.character = this.GetComponent<CharacterScript>();
 		
 		this.mainCamera = Camera.main;
+		checker = GameObject.Find ("Checker").GetComponent<CircleCollider2D>();
+		celeb = GameObject.Find ("Celebrity");
+		sm = GameObject.Find ("GameSystem").GetComponent<CelebStatementManager>();
 	}
 	
 	/// <summary>
@@ -55,7 +66,30 @@ public class CharacterInput : MonoBehaviour {
 			//make sure we don't surpass 1.
 			this.heading.Normalize();
 		}*/
-		
+		float shushButton = Input.GetAxis ("Shush");
+		inputTimer += Time.deltaTime;
+		shushTimer += Time.deltaTime;
+		if(inputTimer > inputCooldown)
+		{
+			if(shushButton > 0)
+			{
+				inputTimer = 0f;
+
+				if(checker.bounds.Intersects(celeb.collider2D.bounds))
+				{
+					
+					//Cancel current tweet.
+					sm.cancelCurrentTweet();
+					sm.cancelCurrentSpeech();
+					
+					//If tweet was bad, nothing happens.
+					//If tweet was good, lose Smoothie.
+					//Trigger a cooldown.
+					//Split this "if" to cover tweet and speech separately.
+				}
+			}
+		}
+
 	}
 	
 	/// <summary>
