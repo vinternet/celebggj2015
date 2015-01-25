@@ -27,9 +27,9 @@ public class GameSystem : MonoBehaviour {
 						Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
 				}
 
-		statementManager = new CelebStatementManager ();
+		//statementManager = new CelebStatementManager ();
 
-		}
+		//}
 
 		topWall = GameObject.Find ("LevelTopWall");
 
