@@ -23,7 +23,7 @@ public class GameSystem : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-<<<<<<< HEAD
+//<<<<<<< HEAD
 				for (int i=0; i<spawnCount; i++) {
 						Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
 				}
@@ -31,12 +31,12 @@ public class GameSystem : MonoBehaviour {
 		//statementManager = new CelebStatementManager ();
 
 		//}
-=======
+//======
 		for (int i=0; i<spawnCount; i++)
 		{
 			Instantiate (crowdPerson, new Vector3 (Random.Range (spawnLeftX, spawnRightX), Random.Range (spawnBottomY, spawnTopY)), Quaternion.identity);
 		}
->>>>>>> ef520937d8b5ad6dff4f6269f83ea98e5ab42dd4
+//>>>>>>> ef520937d8b5ad6dff4f6269f83ea98e5ab42dd4
 
 		//statementManager = new CelebStatementManager ();
 		statementManager = gameObject.GetComponent<CelebStatementManager>();
