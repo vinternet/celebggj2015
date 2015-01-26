@@ -21,7 +21,7 @@ public class CharacterInput : MonoBehaviour {
 	private CelebStatementManager sm;
 
 	public float shushCooldown = 0.5f;
-	public float inputCooldown = 0.01f;
+	public float inputCooldown = 0.1f;
 	private float shushTimer = 0f;
 	private float inputTimer = 0f;
 	
@@ -71,13 +71,14 @@ public class CharacterInput : MonoBehaviour {
 		shushTimer += Time.deltaTime;
 		if(inputTimer > inputCooldown)
 		{
+			//inputTimer = 0f;
 			if(shushButton > 0)
 			{
 				inputTimer = 0f;
 
 				if(checker.bounds.Intersects(celeb.collider2D.bounds))
 				{
-					
+					shushTimer = 0f;		
 					//Cancel current tweet.
 					sm.cancelCurrentTweet();
 					sm.cancelCurrentSpeech();

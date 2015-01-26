@@ -14,7 +14,7 @@ public class CelebStatementManager : MonoBehaviour {
 	public const float MAX_TIME_BETWEEN_SCANDALS = 10f;
 	public const float MIN_TIME_BETWEEN_SCANDALS = 4f;
 
-	public const int ODDS_OF_BAD = 5; //1 in how many are bad.
+	public const int ODDS_OF_BAD = 4; //1 in how many are bad.
 
 	public GameObject tweetText;
 	public GameObject talkText;
@@ -136,10 +136,10 @@ public class CelebStatementManager : MonoBehaviour {
 				{
 					score--;
 					Debug.Log ("Score: " + score);
-					if(score < 0)
+					if(score <= 0)
 					{
 						//load lose scene
-						Application.LoadLevel("lose");
+						Application.LoadLevel(3);
 					}
 				}
 				timeSinceLastTweetLetter = 0;
@@ -168,10 +168,10 @@ public class CelebStatementManager : MonoBehaviour {
 				{
 					score--;
 					Debug.Log ("Score: " + score);
-					if(score < 0)
+					if(score <= 0)
 					{
 						//load lose scene
-						Application.LoadLevel("lose");
+						Application.LoadLevel(3);
 					}
 				}
 				timeSinceLastSpeechLetter = 0;
@@ -191,12 +191,12 @@ public class CelebStatementManager : MonoBehaviour {
 	private string getTweet(){
 		if (isNextStatementBad) {
 			isNextStatementBad = false;
-			tweetText.GetComponent<Text>().color = Color.yellow;
+			tweetText.GetComponent<Text>().color = Color.white;
 			IsCurrentTweetBad = true;
 			return getBadTweet ();
 		} else {
 			IsCurrentTweetBad = false;
-			tweetText.GetComponent<Text>().color = Color.black;
+			tweetText.GetComponent<Text>().color = Color.white;
 			return getGoodTweet();
 		}
 	}
@@ -204,12 +204,12 @@ public class CelebStatementManager : MonoBehaviour {
 	private string getSpeech(){
 		if (isNextStatementBad) {	
 			IsCurrentSpeechBad = true;
-			talkText.GetComponent<Text>().color = Color.yellow;
+			talkText.GetComponent<Text>().color = Color.white;
 			isNextStatementBad = false;
 			return getBadSpeech ();
 		} else {
 			IsCurrentSpeechBad = false;
-			talkText.GetComponent<Text>().color = Color.black;
+			talkText.GetComponent<Text>().color = Color.white;
 			return getGoodSpeech();
 		}
 	}
@@ -223,14 +223,16 @@ public class CelebStatementManager : MonoBehaviour {
 	{
 		//curTweetLetterIndex = currentTweet.Length - 1;
 		timeSinceLastTweetLetter = 12;
-		tweetCancelled = true;
+		if(IsCurrentTweetBad)
+			tweetCancelled = true;
 	}
 
 	public void cancelCurrentSpeech()
 	{
 		//curSpeechLetterIndex = currentSpeech.Length - 1;
 		timeSinceLastSpeechLetter = 12;
-		speechCancelled = true;
+		if(IsCurrentSpeechBad)
+			speechCancelled = true;
 	}
 
 }
